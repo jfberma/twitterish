@@ -1,0 +1,55 @@
+version: '3'
+services:  
+  nginx:
+    restart: always
+    image: nginx:latest
+    container_name: twitterish-nginx01
+    ports:
+      - "8000:8000"
+      - "8001:8001"
+    volumes:
+      - ./config/nginx/:/etc/nginx/conf.d
+      - ./logs/nginx/:/var/log/nginx
+      - ./api/static:/static
+      - ./api/uploads:/uploads
+    depends_on:
+      - api
+      - web
+  web:
+    restart: always
+    image: "node:10"
+    user: "node"
+    container_name: twitterish-web01
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./web/:/home/node/app
+    ports:
+      - "8001"
+    command: bash -c "npm rebuild node-sass --force && npm start" # Rebuild node-sass for Docker environment
+    #command: bash -c "npm start"
+    depends_on:
+      - api
+  api:
+    restart: always
+    build:
+      context: .
+      dockerfile: ./api/Dockerfile
+    container_name: twitterish-api01
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py create_default_superuser && python manage.py collectstatic --noinput && python manage.py test api.accounts api.feed && gunicorn api.wsgi -b 0.0.0.0:8000 --reload"
+    depends_on:
+      - db
+    volumes:
+      - ./api:/api
+      - ./api/static:/static
+      - ./api/uploads:/uploads
+      - ./logs/api/:/var/log/api
+    expose:
+      - "8000"
+  db:
+    restart: always
+    image: postgres:latest
+    container_name: twitterish-postgres01
+    ports:
+      - "49161:5432"

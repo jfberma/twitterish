@@ -1,0 +1,9 @@
+Django==2.0.7
+gunicorn==19.9.0
+psycopg2==2.7.5
+djangorestframework==3.8.2
+requests2==2.16.0
+django-friendship==1.8.0
+django-cors-headers==2.4.0
+djoser==1.1.5
+mock==2.0.0

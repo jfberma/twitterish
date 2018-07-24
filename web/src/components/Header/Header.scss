@@ -1,0 +1,27 @@
+div {
+  .header {
+    background: #4885ed;
+    padding: 15px;
+    color: white;
+    margin-bottom: 20px;
+
+    a {
+      color: white;
+    }
+
+    .list-inline {
+      margin-bottom: 0px;
+
+      .list-inline-item {
+        margin-right: 0px;
+        margin-left: 20px;
+
+        .logout {
+          cursor: pointer;
+        }
+      }
+    }
+
+  }
+
+}
