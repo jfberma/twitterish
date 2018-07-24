@@ -1,6 +1,6 @@
 # Twitterish
 
-Twitterish is a Twitter-like web app build on Django and React.
+Twitterish is a Twitter-like web app build on Django and React. You can play around with a running instance here: http://54.244.87.90:8001/
 
 ### Design Overview
 
@@ -93,4 +93,5 @@ The backend dashboard allows you to review and/or edit all of the data in the sy
 - Form validation is not great. I would flesh it out more in a real world scenario.
 - My unit tests are pretty rudimentary on the backend and non-existent on the front-end. I would definitely want to add more coverage.
 - In the real world, I'd divide the front and backend into separate repos.
+- In the real world, SSL would be a must.
 

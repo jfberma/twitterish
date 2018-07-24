@@ -83,4 +83,4 @@ fabric.properties
 
 /logs
 .DS_Store
-static/*
+api/static/*
