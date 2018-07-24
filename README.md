@@ -51,7 +51,7 @@ Running Twitterish requires [Docker and Docker Compose](https://www.docker.com/g
 
 - Make sure port 8000 and 8001 are free on you machine (these ports are used by the backend and the web app). If you _really_ want to change the ports you can go into the docker-compose.yml file and change them there.
 
-- From the root directory of the repo, run `docker-compose up --build`
+- From the root directory of the repo, run `docker-compose up --build` Note: sudo may be required for certain configurations
 
 This command will build and start the 4 containers. It will probably take a few minutes. Maybe get a coffee in the meantime :)
 

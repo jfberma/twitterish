@@ -27,8 +27,8 @@ services:
       - ./web/:/home/node/app
     ports:
       - "8001"
-    command: bash -c "npm rebuild node-sass --force && npm start" # Rebuild node-sass for Docker environment
-    #command: bash -c "npm start"
+    command: bash -c "npm install && npm rebuild node-sass --force && npm start" # Rebuild node-sass for Docker environment
+    #command: bash -c "npm install && npm start"
     depends_on:
       - api
   api:
